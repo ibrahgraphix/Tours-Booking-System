@@ -1,0 +1,118 @@
+.home {
+  font-family: "Segoe UI", sans-serif;
+  color: #333;
+  background-color: #f9f9f9;
+}
+
+.banner {
+  height: 90vh;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+
+.overlay {
+  background: rgba(0, 0, 0, 0.5);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  padding: 20px;
+  text-align: center;
+}
+
+.title {
+  font-size: 3.5rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.subtitle {
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+}
+
+.bookBtn {
+  padding: 12px 25px;
+  font-size: 1rem;
+  background-color: #ff5722;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+.bookBtn:hover {
+  background-color: #e64a19;
+}
+
+.section {
+  padding: 50px 20px;
+  text-align: center;
+  background: white;
+}
+
+.section h2 {
+  font-size: 2rem;
+  margin-bottom: 30px;
+  color: #222;
+}
+
+.cards {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 25px;
+}
+
+.card {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  width: 280px;
+  padding: 20px;
+  text-align: center;
+  transition: transform 0.3s;
+}
+.card img {
+  width: 100%;
+  height: 180px;
+  border-radius: 10px;
+  object-fit: cover;
+}
+.card:hover {
+  transform: translateY(-5px);
+}
+
+.bullets {
+  list-style: none;
+  padding: 0;
+  font-size: 1.1rem;
+  max-width: 600px;
+  margin: 0 auto;
+}
+.bullets li {
+  margin: 10px 0;
+}
+
+.footer {
+  background: #222;
+  color: white;
+  padding: 25px 20px;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  font-size: 0.9rem;
+}
+
+.footer .socials a {
+  color: #ffab40;
+  margin-left: 15px;
+  text-decoration: none;
+  font-weight: bold;
+}
+.footer .socials a:hover {
+  color: #ff6d00;
+}

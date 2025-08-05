@@ -1,0 +1,68 @@
+.paymentPage {
+  background-image: url("../../../assets/payment-bg.jpg"); /* Use your bg image here */
+  background-size: cover;
+  background-position: center;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+}
+
+.overlay {
+  background: rgba(255, 255, 255, 0.92);
+  padding: 3rem;
+  border-radius: 10px;
+  width: 100%;
+  max-width: 500px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+  margin-bottom: 1.5rem;
+  text-align: center;
+  color: #2c3e50;
+}
+
+.paymentForm {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.paymentForm label {
+  font-weight: bold;
+  color: #34495e;
+}
+
+.paymentForm select,
+.paymentForm input {
+  padding: 0.7rem;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+}
+
+.paymentForm button {
+  background-color: #2ecc71;
+  color: white;
+  border: none;
+  padding: 0.9rem;
+  font-size: 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.paymentForm button:hover {
+  background-color: #27ae60;
+}
+
+.successMsg {
+  background-color: #dff0d8;
+  color: #3c763d;
+  padding: 1rem;
+  border-radius: 5px;
+  text-align: center;
+  font-weight: bold;
+}
