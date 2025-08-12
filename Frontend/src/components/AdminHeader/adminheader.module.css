@@ -1,0 +1,59 @@
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 64px; /* header height used also in sidebar calculations */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+  background: linear-gradient(90deg, #0e53e9 0%, #065fee 100%);
+  color: white;
+  z-index: 1400;
+  box-shadow: 0 2px 8px rgba(2, 6, 23, 0.12);
+}
+
+/* left brand area */
+.left .brand {
+  font-weight: 700;
+  font-size: 1rem;
+  letter-spacing: 0.4px;
+}
+
+/* right profile area */
+.right {
+  display: flex;
+  align-items: center;
+}
+
+.profile {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  box-shadow: 0 2px 6px rgba(2, 6, 23, 0.18);
+  background: #fff;
+}
+
+.profileInfo {
+  display: flex;
+  flex-direction: column;
+  line-height: 1;
+}
+
+.name {
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.role {
+  font-size: 0.75rem;
+  opacity: 0.9;
+}

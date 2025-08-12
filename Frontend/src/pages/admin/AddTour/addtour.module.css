@@ -1,0 +1,103 @@
+/* src/pages/admin/AddTour.module.css */
+.container {
+  max-width: 640px;
+  margin: 50px auto;
+  padding: 40px;
+  background: linear-gradient(to bottom right, #ffffff, #f7f9fc);
+  border-radius: 16px;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+}
+
+.title {
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 30px;
+  text-align: center;
+  color: #1e2a3a;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+label {
+  font-weight: 600;
+  font-size: 15px;
+  margin-bottom: 8px;
+  color: #2e3a59;
+}
+
+input,
+textarea {
+  padding: 12px 14px;
+  font-size: 15px;
+  border: 1px solid #d9dbe9;
+  border-radius: 10px;
+  background-color: #fff;
+  transition: border 0.3s ease, box-shadow 0.2s ease;
+}
+
+input:focus,
+textarea:focus {
+  border-color: #4a7cfa;
+  box-shadow: 0 0 0 3px rgba(74, 124, 250, 0.2);
+  outline: none;
+}
+
+textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+.errorInput {
+  border-color: #e53935 !important;
+  background-color: #fff8f8;
+}
+
+.error {
+  color: #e53935;
+  font-size: 13px;
+  margin-top: 4px;
+  position: absolute;
+  bottom: -20px;
+  left: 2px;
+}
+
+.submitBtn {
+  background: linear-gradient(to right, #4e89ff, #6c63ff);
+  color: #fff;
+  padding: 14px;
+  font-size: 16px;
+  border: none;
+  font-weight: 600;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.1s ease;
+}
+
+.submitBtn:hover {
+  background: linear-gradient(to right, #3a6fd6, #5851db);
+  transform: translateY(-1px);
+}
+
+.success {
+  margin-top: 20px;
+  color: #2e9d51;
+  font-weight: 600;
+  text-align: center;
+  background-color: #e8f5e9;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #c8e6c9;
+  font-size: 14px;
+}

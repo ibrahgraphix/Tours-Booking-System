@@ -12,7 +12,7 @@ const HomePage = () => {
   const navigate = useNavigate();
 
   const handleBookNow = () => {
-    navigate("/tours");
+    navigate("/book"); // ✅ Directs to the Booking Page
   };
 
   return (
@@ -65,19 +65,6 @@ const HomePage = () => {
           <li>Secure online payments</li>
         </ul>
       </section>
-
-      {/* Footer */}
-      <footer className={styles.footer}>
-        <div>
-          <p>&copy; {new Date().getFullYear()} TourConnect Tanzania</p>
-          <p>Contact: info@tourconnect.co.tz | +255 123 456 789</p>
-        </div>
-        <div className={styles.socials}>
-          <a href="#">Facebook</a>
-          <a href="#">Instagram</a>
-          <a href="#">WhatsApp</a>
-        </div>
-      </footer>
     </div>
   );
 };

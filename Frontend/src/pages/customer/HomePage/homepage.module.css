@@ -27,6 +27,7 @@
   font-size: 3.5rem;
   font-weight: bold;
   margin-bottom: 10px;
+  color: white;
 }
 
 .subtitle {
@@ -95,24 +96,4 @@
 }
 .bullets li {
   margin: 10px 0;
-}
-
-.footer {
-  background: #222;
-  color: white;
-  padding: 25px 20px;
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  font-size: 0.9rem;
-}
-
-.footer .socials a {
-  color: #ffab40;
-  margin-left: 15px;
-  text-decoration: none;
-  font-weight: bold;
-}
-.footer .socials a:hover {
-  color: #ff6d00;
 }

@@ -12,8 +12,10 @@ import {
   Title,
   Tooltip,
   Legend,
+  Filler, // ✅ Import Filler plugin
 } from "chart.js";
 
+// ✅ Register all required components & Filler
 ChartJS.register(
   CategoryScale,
   LinearScale,
@@ -22,7 +24,8 @@ ChartJS.register(
   PointElement,
   Title,
   Tooltip,
-  Legend
+  Legend,
+  Filler
 );
 
 const Dashboard = () => {
