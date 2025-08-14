@@ -40,7 +40,7 @@ const CustomerNavbar = () => {
         </li>
         <li>
           <NavLink
-            to="/my-bookings"
+            to="/bookings"
             className={({ isActive }) => (isActive ? styles.active : "")}
           >
             My Bookings

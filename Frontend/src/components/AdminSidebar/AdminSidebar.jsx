@@ -8,6 +8,7 @@ import {
   FaListUl,
   FaBars,
   FaSignOutAlt,
+  FaThList, // icon for My Tours
 } from "react-icons/fa";
 import styles from "./adminsidebar.module.css";
 
@@ -34,7 +35,6 @@ const AdminSidebar = () => {
       <aside
         className={`${styles.sidebar} ${isOpen ? styles.open : styles.closed}`}
       >
-        {/* title removed to avoid duplication with top header */}
         <nav className={styles.nav}>
           <NavLink
             to="/admin"
@@ -48,6 +48,12 @@ const AdminSidebar = () => {
             className={({ isActive }) => (isActive ? styles.activeLink : "")}
           >
             <FaPlusCircle className={styles.icon} /> {isOpen && "Add Tour"}
+          </NavLink>
+          <NavLink
+            to="/admin/my-tours"
+            className={({ isActive }) => (isActive ? styles.activeLink : "")}
+          >
+            <FaThList className={styles.icon} /> {isOpen && "My Tours"}
           </NavLink>
           <NavLink
             to="/admin/calendar"

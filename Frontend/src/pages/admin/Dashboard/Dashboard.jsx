@@ -1,5 +1,6 @@
 // src/pages/admin/Dashboard.jsx
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import styles from "./Dashboard.module.css";
 import { Bar, Line } from "react-chartjs-2";
 import {
@@ -12,10 +13,10 @@ import {
   Title,
   Tooltip,
   Legend,
-  Filler, // ✅ Import Filler plugin
+  Filler,
 } from "chart.js";
 
-// ✅ Register all required components & Filler
+// Register Chart.js components
 ChartJS.register(
   CategoryScale,
   LinearScale,
@@ -29,6 +30,8 @@ ChartJS.register(
 );
 
 const Dashboard = () => {
+  const navigate = useNavigate();
+
   const bookingsData = {
     labels: ["Jan", "Feb", "Mar", "Apr", "May"],
     datasets: [
@@ -99,8 +102,12 @@ const Dashboard = () => {
       </div>
 
       <div className={styles.quickLinks}>
-        <button>Add New Tour</button>
-        <button>View Bookings</button>
+        <button onClick={() => navigate("/admin/add-tour")}>
+          Add New Tour
+        </button>
+        <button onClick={() => navigate("/admin/booking-list")}>
+          View Bookings
+        </button>
       </div>
     </div>
   );

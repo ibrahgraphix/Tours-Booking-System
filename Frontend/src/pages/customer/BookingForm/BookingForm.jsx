@@ -3,12 +3,15 @@ import styles from "./BookingForm.module.css";
 import axios from "axios";
 import backgroundImage from "../../../assets/booking-bg.jpg";
 
-const BookingForm = ({ selectedTour }) => {
+const BookingForm = ({ onBookingSuccess }) => {
+  // Get selected tour from localStorage
+  const selectedTour = JSON.parse(localStorage.getItem("selectedTour") || "{}");
+
   const [formData, setFormData] = useState({
-    tour: selectedTour || "",
-    name: "",
+    tour_id: selectedTour.id || 0,
+    full_name: "",
     email: "",
-    people: 1,
+    number_of_people: 1,
   });
 
   const [successMessage, setSuccessMessage] = useState("");
@@ -16,31 +19,48 @@ const BookingForm = ({ selectedTour }) => {
 
   useEffect(() => {
     const loggedUser = {
-      name: "Ibrahim Shelukindo",
-      email: "ibrahim@example.com",
+      full_name: "",
+      email: "",
     };
     setFormData((prev) => ({
       ...prev,
-      name: loggedUser.name,
+      full_name: loggedUser.full_name,
       email: loggedUser.email,
     }));
   }, []);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
+    setFormData((prev) => ({
+      ...prev,
+      [name]:
+        name === "number_of_people" || name === "tour_id"
+          ? parseInt(value)
+          : value,
+    }));
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post("/api/bookings", formData);
+      await axios.post("http://localhost:3000/api/bookings", formData);
       setSuccessMessage("🎉 Booking confirmed! We'll contact you soon.");
       setErrorMessage("");
-      setFormData({ tour: "", name: "", email: "", people: 1 });
+
+      // Reset form
+      setFormData({
+        tour_id: selectedTour.id || 0,
+        full_name: "",
+        email: "",
+        number_of_people: 1,
+      });
+
+      // Notify parent to refresh bookings
+      if (onBookingSuccess) onBookingSuccess();
     } catch (error) {
-      setErrorMessage("❌ Failed to book. Please try again.");
+      setErrorMessage("Failed to book. Please try again.");
       setSuccessMessage("");
+      console.error(error);
     }
   };
 
@@ -55,21 +75,17 @@ const BookingForm = ({ selectedTour }) => {
           <form onSubmit={handleSubmit} className={styles.form}>
             <label>
               Tour:
-              <input
-                type="text"
-                name="tour"
-                value={formData.tour}
-                onChange={handleChange}
-                required
-              />
+              <input type="text" value={selectedTour.name || ""} readOnly />
             </label>
+
+            <input type="hidden" name="tour_id" value={formData.tour_id} />
 
             <label>
               Full Name:
               <input
                 type="text"
-                name="name"
-                value={formData.name}
+                name="full_name"
+                value={formData.full_name}
                 onChange={handleChange}
                 required
               />
@@ -90,8 +106,8 @@ const BookingForm = ({ selectedTour }) => {
               Number of People:
               <input
                 type="number"
-                name="people"
-                value={formData.people}
+                name="number_of_people"
+                value={formData.number_of_people}
                 onChange={handleChange}
                 min="1"
                 required

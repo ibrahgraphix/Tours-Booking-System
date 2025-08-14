@@ -1,6 +1,6 @@
 // src/pages/admin/AddTour.jsx
 import React, { useState } from "react";
-import styles from "./AddTour.module.css";
+import styles from "./addtour.module.css";
 
 const AddTour = () => {
   const [formData, setFormData] = useState({
@@ -10,43 +10,40 @@ const AddTour = () => {
     datetime: "",
     image: null,
   });
-
   const [errors, setErrors] = useState({});
-  const [successMsg, setSuccessMsg] = useState("");
+  const [successMessage, setSuccessMessage] = useState("");
 
   const handleChange = (e) => {
-    const { name, value, type, files } = e.target;
-    setFormData((prev) => ({
-      ...prev,
-      [name]: type === "file" ? files[0] : value,
-    }));
+    const { name, value, files } = e.target;
+    if (name === "image") {
+      setFormData({ ...formData, image: files[0] });
+    } else {
+      setFormData({ ...formData, [name]: value });
+    }
   };
 
   const validate = () => {
-    const errs = {};
-    if (!formData.name) errs.name = "Tour name is required";
-    if (!formData.description) errs.description = "Description is required";
-    if (!formData.price) errs.price = "Price is required";
-    if (!formData.datetime) errs.datetime = "Date & Time is required";
-    return errs;
+    let tempErrors = {};
+    if (!formData.name) tempErrors.name = "Tour name is required";
+    if (!formData.description)
+      tempErrors.description = "Description is required";
+    if (!formData.price) tempErrors.price = "Price is required";
+    if (!formData.datetime) tempErrors.datetime = "Date is required";
+    if (!formData.image) tempErrors.image = "Image is required";
+    setErrors(tempErrors);
+    return Object.keys(tempErrors).length === 0;
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const validationErrors = validate();
-    if (Object.keys(validationErrors).length > 0) {
-      setErrors(validationErrors);
-      return;
-    }
+    if (!validate()) return;
 
     const tourData = new FormData();
     tourData.append("name", formData.name);
     tourData.append("description", formData.description);
     tourData.append("price", formData.price);
     tourData.append("datetime", formData.datetime);
-    if (formData.image) {
-      tourData.append("image", formData.image);
-    }
+    tourData.append("image", formData.image);
 
     try {
       const res = await fetch("/api/tours", {
@@ -54,29 +51,33 @@ const AddTour = () => {
         body: tourData,
       });
 
-      if (!res.ok) throw new Error("Failed to add tour");
-
-      setSuccessMsg("Tour created successfully!");
-      setFormData({
-        name: "",
-        description: "",
-        price: "",
-        datetime: "",
-        image: null,
-      });
-      setErrors({});
-    } catch (error) {
-      console.error(error);
-      setSuccessMsg("Something went wrong.");
+      if (res.ok) {
+        setSuccessMessage("Tour added successfully!");
+        setFormData({
+          name: "",
+          description: "",
+          price: "",
+          datetime: "",
+          image: null,
+        });
+        setErrors({});
+      } else {
+        const errorData = await res.json();
+        alert(errorData.error || "Failed to add tour");
+      }
+    } catch (err) {
+      console.error(err);
+      alert("An error occurred");
     }
   };
 
   return (
     <div className={styles.container}>
-      <h2 className={styles.title}>Add New Tour</h2>
+      <h1 className={styles.title}>Add New Tour</h1>
       <form onSubmit={handleSubmit} className={styles.form}>
+        {/* Name */}
         <div className={styles.field}>
-          <label>Tour Name*</label>
+          <label>Tour Name</label>
           <input
             type="text"
             name="name"
@@ -84,25 +85,26 @@ const AddTour = () => {
             onChange={handleChange}
             className={errors.name ? styles.errorInput : ""}
           />
-          {errors.name && <span className={styles.error}>{errors.name}</span>}
+          {errors.name && <div className={styles.error}>{errors.name}</div>}
         </div>
 
+        {/* Description */}
         <div className={styles.field}>
-          <label>Description*</label>
+          <label>Description</label>
           <textarea
             name="description"
             value={formData.description}
             onChange={handleChange}
-            rows="4"
             className={errors.description ? styles.errorInput : ""}
           />
           {errors.description && (
-            <span className={styles.error}>{errors.description}</span>
+            <div className={styles.error}>{errors.description}</div>
           )}
         </div>
 
+        {/* Price */}
         <div className={styles.field}>
-          <label>Price (USD)*</label>
+          <label>Price</label>
           <input
             type="number"
             name="price"
@@ -110,11 +112,12 @@ const AddTour = () => {
             onChange={handleChange}
             className={errors.price ? styles.errorInput : ""}
           />
-          {errors.price && <span className={styles.error}>{errors.price}</span>}
+          {errors.price && <div className={styles.error}>{errors.price}</div>}
         </div>
 
+        {/* Date */}
         <div className={styles.field}>
-          <label>Date & Time*</label>
+          <label>Date & Time</label>
           <input
             type="datetime-local"
             name="datetime"
@@ -123,25 +126,30 @@ const AddTour = () => {
             className={errors.datetime ? styles.errorInput : ""}
           />
           {errors.datetime && (
-            <span className={styles.error}>{errors.datetime}</span>
+            <div className={styles.error}>{errors.datetime}</div>
           )}
         </div>
 
+        {/* Image Upload */}
         <div className={styles.field}>
-          <label>Image (optional)</label>
+          <label>Image</label>
           <input
             type="file"
             name="image"
             accept="image/*"
             onChange={handleChange}
+            className={errors.image ? styles.errorInput : ""}
           />
+          {errors.image && <div className={styles.error}>{errors.image}</div>}
         </div>
 
         <button type="submit" className={styles.submitBtn}>
-          Create Tour
+          Add Tour
         </button>
 
-        {successMsg && <p className={styles.success}>{successMsg}</p>}
+        {successMessage && (
+          <div className={styles.success}>{successMessage}</div>
+        )}
       </form>
     </div>
   );

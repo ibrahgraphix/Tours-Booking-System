@@ -11,12 +11,15 @@ import HomePage from "./pages/customer/HomePage/HomePage";
 import BookingForm from "./pages/customer/BookingForm/BookingForm";
 import PaymentPage from "./pages/customer/PaymentPage/PaymentPage";
 import ContactPage from "./pages/customer/ContactPage/ContactPage";
+import TourList from "./pages/customer/TourList/TourList";
+import MyBookings from "./pages/customer/MyBookings/MyBookings";
 
 import Dashboard from "./pages/admin/Dashboard/Dashboard";
 import AddTour from "./pages/admin/AddTour/AddTour";
 import CalendarView from "./pages/admin/CalendarView/CalendarView";
 import PaymentStatus from "./pages/admin/PaymentStatus/PaymentStatus";
 import BookingList from "./pages/admin/BookingList/BookingList";
+import MyTours from "./pages/admin/MyTours/MyTours";
 
 import { AdminRoute, CustomerRoute } from "./components/RouteGuards";
 
@@ -35,7 +38,9 @@ const AppRoutes = () => (
       }
     >
       <Route path="/home" element={<HomePage />} />
+      <Route path="/tours" element={<TourList />} />
       <Route path="/book" element={<BookingForm />} />
+      <Route path="/bookings" element={<MyBookings />} />
       <Route path="/payment" element={<PaymentPage />} />
       <Route path="/contact" element={<ContactPage />} />
     </Route>
@@ -51,6 +56,7 @@ const AppRoutes = () => (
     >
       <Route index element={<Dashboard />} />
       <Route path="add-tour" element={<AddTour />} />
+      <Route path="/admin/my-tours" element={<MyTours />} />
       <Route path="calendar" element={<CalendarView />} />
       <Route path="payment-status" element={<PaymentStatus />} />
       <Route path="booking-list" element={<BookingList />} />

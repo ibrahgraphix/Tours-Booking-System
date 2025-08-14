@@ -12,7 +12,7 @@ const HomePage = () => {
   const navigate = useNavigate();
 
   const handleBookNow = () => {
-    navigate("/book"); // ✅ Directs to the Booking Page
+    navigate("/tours"); // ✅ Directs to the Tours Page
   };
 
   return (
