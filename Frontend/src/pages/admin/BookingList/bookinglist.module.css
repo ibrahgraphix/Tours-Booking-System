@@ -66,3 +66,14 @@
 .exportBtn:hover {
   background-color: #3796d3;
 }
+
+/* New style for cancelled bookings */
+.table tr.cancelled {
+  background-color: #ffe6e6; /* light red */
+  color: #a71d2a;
+}
+
+.table tr.cancelled select {
+  background-color: #f5c6cb;
+  cursor: not-allowed;
+}

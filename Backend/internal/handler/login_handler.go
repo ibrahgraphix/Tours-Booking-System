@@ -27,7 +27,7 @@ func (h *LoginHandler) Login(c *gin.Context) {
 		})
 		return
 	}
-    
+
 	user, err := h.LoginService.Login(req.Email, req.Password)
 	if err != nil {
 		switch {
@@ -63,17 +63,19 @@ func (h *LoginHandler) Login(c *gin.Context) {
 		}
 	}
 
-	// On success, include role
+	// On success, include role, company_id and is_superadmin
 	c.JSON(http.StatusOK, gin.H{
 		"success": true,
 		"message": constants.MsgLoginSuccess,
 		"user": gin.H{
-			"id":           user.ID,
-			"first_name":   user.FirstName,
-			"last_name":    user.LastName,
-			"email":        user.Email,
-			"mobile_number": user.MobileNumber,
-			"role":         user.Role,
+			"id":             user.ID,
+			"first_name":     user.FirstName,
+			"last_name":      user.LastName,
+			"email":          user.Email,
+			"mobile_number":  user.MobileNumber,
+			"role":           user.Role,
+			"company_id":     user.CompanyID,
+			"is_superadmin":  user.IsSuperAdmin,
 		},
 	})
 }

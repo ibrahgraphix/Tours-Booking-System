@@ -30,7 +30,7 @@ const BookingList = () => {
     }
   };
 
-  // 📌 Update booking status
+  // Update booking status
   const handleStatusChange = async (id, newStatus) => {
     try {
       await axios.put(`/api/admin/bookings/${id}/status`, {
@@ -44,7 +44,7 @@ const BookingList = () => {
     }
   };
 
-  // 📌 Export bookings as Excel
+  // Export bookings as Excel
   const handleExport = async () => {
     try {
       const res = await axios.get("/api/admin/bookings/export", {
@@ -99,7 +99,12 @@ const BookingList = () => {
           </thead>
           <tbody>
             {bookings.map((booking) => (
-              <tr key={booking.id}>
+              <tr
+                key={booking.id}
+                className={
+                  booking.status === "cancelled" ? styles.cancelled : ""
+                }
+              >
                 <td>{booking.id}</td>
                 <td>{booking.tour_name}</td>
                 <td>{booking.full_name}</td>
@@ -108,6 +113,7 @@ const BookingList = () => {
                 <td>
                   <select
                     value={booking.status}
+                    disabled={booking.status === "cancelled"}
                     onChange={(e) =>
                       handleStatusChange(booking.id, e.target.value)
                     }

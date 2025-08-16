@@ -10,6 +10,7 @@ const SignUp = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [mobileNumber, setMobileNumber] = useState("");
+  const [companyName, setCompanyName] = useState("");
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
@@ -21,7 +22,8 @@ const SignUp = () => {
         lastName,
         email,
         password,
-        mobileNumber
+        mobileNumber,
+        companyName
       );
 
       console.log("Signup successful:", userData);
@@ -95,6 +97,17 @@ const SignUp = () => {
               value={mobileNumber}
               onChange={(e) => setMobileNumber(e.target.value)}
               placeholder="Enter your mobile number"
+              className={styles.input}
+              required
+            />
+          </div>
+          <div className={styles.inputGroup}>
+            <label>Company Name</label>
+            <input
+              type="text"
+              value={companyName}
+              onChange={(e) => setCompanyName(e.target.value)}
+              placeholder="Enter your company name"
               className={styles.input}
               required
             />

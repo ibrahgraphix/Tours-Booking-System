@@ -12,6 +12,10 @@ import {
 } from "react-icons/fa";
 import styles from "./adminsidebar.module.css";
 
+const stored = localStorage.getItem("user");
+const currentUser = stored ? JSON.parse(stored) : null;
+const isSuperAdmin = currentUser?.is_superadmin;
+
 const AdminSidebar = () => {
   const [isOpen, setIsOpen] = useState(true);
   const navigate = useNavigate();
@@ -62,7 +66,7 @@ const AdminSidebar = () => {
             <FaCalendarAlt className={styles.icon} /> {isOpen && "Calendar"}
           </NavLink>
           <NavLink
-            to="/admin/payment-status"
+            to="/admin/payments"
             className={({ isActive }) => (isActive ? styles.activeLink : "")}
           >
             <FaMoneyBillWave className={styles.icon} />{" "}
@@ -74,6 +78,14 @@ const AdminSidebar = () => {
           >
             <FaListUl className={styles.icon} /> {isOpen && "Booking List"}
           </NavLink>
+          {isSuperAdmin && (
+            <NavLink
+              to="/admin/admin-users"
+              className={({ isActive }) => (isActive ? styles.activeLink : "")}
+            >
+              <FaListUl className={styles.icon} /> {isOpen && "Admin Users"}
+            </NavLink>
+          )}
 
           {/* Logout Button */}
           <button

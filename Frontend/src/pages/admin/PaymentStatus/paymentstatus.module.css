@@ -1,0 +1,188 @@
+.container {
+  background: #fff;
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  margin: 20px auto;
+  max-width: 1200px;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  overflow-x: auto;
+}
+
+.heading {
+  font-size: 1.8rem;
+  margin-bottom: 20px;
+  color: #333;
+  font-weight: 600;
+  text-align: left;
+}
+
+.filters {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 15px;
+  margin-bottom: 20px;
+  align-items: center;
+  justify-content: flex-start;
+  overflow-x: auto;
+}
+
+.filters select,
+.filters input {
+  padding: 8px 12px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+}
+
+.filters button {
+  padding: 8px 16px;
+  border: none;
+  background-color: #007bff;
+  color: #fff;
+  font-weight: 500;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.filters button:hover {
+  background-color: #0056b3;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+  min-width: 900px;
+}
+
+.table th,
+.table td {
+  border: 1px solid #e0e0e0;
+  padding: 12px 15px;
+  text-align: left;
+}
+
+.table th {
+  background-color: #f8f9fa;
+  font-weight: 600;
+  color: #333;
+}
+
+.table tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.table tr:hover {
+  background-color: #f1f1f1;
+}
+
+.deleteBtn {
+  background-color: #dc3545;
+  color: #fff;
+  margin-left: 5px;
+  padding: 6px 12px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 500;
+  transition: background 0.2s ease;
+}
+
+.deleteBtn:hover {
+  background-color: #c82333;
+}
+
+.loading,
+.error {
+  font-size: 16px;
+  text-align: center;
+  margin-top: 40px;
+  color: #555;
+}
+
+.error {
+  color: #dc3545;
+}
+
+.noData {
+  text-align: center;
+  padding: 20px 0;
+  color: #666;
+}
+
+.actionsCell {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.table input[type="number"],
+.table input[type="text"] {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 4px 6px;
+  font-size: 0.9rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.saveBtn {
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.2s ease;
+}
+
+.saveBtn:hover {
+  background-color: #45a049;
+}
+
+.saveBtn:disabled {
+  background-color: #a5d6a7;
+  cursor: not-allowed;
+}
+
+.table td:nth-child(4),
+.table th:nth-child(4) {
+  width: 80px;
+}
+
+.table td:nth-child(5),
+.table th:nth-child(5) {
+  width: 100px;
+}
+
+/* Reduced Action column width */
+.table td:nth-child(8),
+.table th:nth-child(8) {
+  white-space: nowrap;
+  width: 120px; /* reduced from default to make narrower */
+}
+.verifyBtn {
+  background-color: #4caf50; /* green */
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+  /* match spacing to Save/Delete button spacing */
+  margin-left: 5px;
+}
+
+.verifyBtn:hover {
+  background-color: #45a049;
+}
+
+.verifyBtn:disabled {
+  background-color: #a5d6a7; /* lighter green when disabled */
+  cursor: not-allowed;
+}

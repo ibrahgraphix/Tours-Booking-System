@@ -20,6 +20,7 @@ import CalendarView from "./pages/admin/CalendarView/CalendarView";
 import PaymentStatus from "./pages/admin/PaymentStatus/PaymentStatus";
 import BookingList from "./pages/admin/BookingList/BookingList";
 import MyTours from "./pages/admin/MyTours/MyTours";
+import AdminUsers from "./pages/admin/AdminUsers/AdminUsers";
 
 import { AdminRoute, CustomerRoute } from "./components/RouteGuards";
 
@@ -58,8 +59,9 @@ const AppRoutes = () => (
       <Route path="add-tour" element={<AddTour />} />
       <Route path="/admin/my-tours" element={<MyTours />} />
       <Route path="calendar" element={<CalendarView />} />
-      <Route path="payment-status" element={<PaymentStatus />} />
+      <Route path="payments" element={<PaymentStatus />} />
       <Route path="booking-list" element={<BookingList />} />
+      <Route path="admin-users" element={<AdminUsers />} />
     </Route>
 
     {/* Redirect root '/' to login */}

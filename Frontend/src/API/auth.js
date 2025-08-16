@@ -25,7 +25,7 @@ export const signupUser = async (
   email,
   password,
   mobileNumber,
-  role // optional param if you want to add from frontend later
+  companyName // optional: new company name
 ) => {
   try {
     const data = {
@@ -35,8 +35,8 @@ export const signupUser = async (
       password,
       mobile_number: mobileNumber,
     };
-    if (role) {
-      data.role = role;
+    if (companyName) {
+      data.company_name = companyName; // send company_name to backend
     }
     const response = await axios.post(`${API_BASE}/signup`, data);
     return response.data;

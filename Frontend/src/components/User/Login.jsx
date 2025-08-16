@@ -21,11 +21,13 @@ const Login = () => {
       // Store entire user object including role
       localStorage.setItem("user", JSON.stringify(userData.user));
 
-      // Redirect based on role
-      if (userData.user.role === "admin") {
-        navigate("/admin"); // Admin layout root = Dashboard
+      // ✅ Redirect based on role
+      if (userData.user.role === "super_admin") {
+        navigate("/admin/users"); // only you
+      } else if (userData.user.role === "admin") {
+        navigate("/admin"); // normal admin dashboard
       } else {
-        navigate("/home"); // Customer home page
+        navigate("/home"); // customer dashboard
       }
     } catch (error) {
       console.error("Login failed:", error);

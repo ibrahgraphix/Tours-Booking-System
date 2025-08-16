@@ -42,11 +42,9 @@ const TourList = () => {
             )}
             <div className={styles.info}>
               <h2>{tour.name}</h2>
-              <p className={styles.description}>
-                {tour.description.length > 80
-                  ? tour.description.substring(0, 80) + "..."
-                  : tour.description}
-              </p>
+              {/* ✅ Show full description without cutting */}
+              <p className={styles.description}>{tour.description}</p>
+
               <p className={styles.date}>
                 📅 {new Date(tour.date).toLocaleDateString()}{" "}
                 {new Date(tour.date).toLocaleTimeString([], {

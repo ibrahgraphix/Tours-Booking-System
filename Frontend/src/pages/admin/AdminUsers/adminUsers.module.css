@@ -1,0 +1,116 @@
+.wrap {
+  display: grid;
+  gap: 16px;
+  padding: 16px;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.title {
+  margin: 0;
+  font-size: 22px;
+  font-weight: 700;
+}
+
+.controls {
+  display: flex;
+  gap: 8px;
+}
+
+.search {
+  padding: 8px 10px;
+  min-width: 260px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+}
+
+.refresh {
+  padding: 8px 12px;
+  border: 1px solid #ddd;
+  background: #fff;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.loading {
+  padding: 12px;
+}
+
+.tableWrap {
+  overflow: auto;
+  border: 1px solid #eee;
+  border-radius: 12px;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+.table th,
+.table td {
+  padding: 10px 12px;
+  border-bottom: 1px solid #f1f1f1;
+  text-align: left;
+  vertical-align: top;
+}
+
+.table thead th {
+  background: #fafafa;
+  font-weight: 600;
+}
+
+.muted {
+  color: #777;
+  font-size: 12px;
+}
+
+.actions {
+  display: flex;
+  gap: 8px;
+}
+
+.btn,
+.btnPrimary,
+.btnDanger {
+  padding: 6px 10px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  background: #fff;
+  cursor: pointer;
+}
+
+.btnPrimary {
+  border-color: #2563eb;
+}
+
+.btnDanger {
+  border-color: #ef4444;
+}
+
+.roleAdmin {
+  color: #2563eb;
+  font-weight: 600;
+}
+
+.roleCustomer {
+  color: #16a34a;
+  font-weight: 600;
+}
+
+.empty {
+  padding: 20px;
+  text-align: center;
+  color: #777;
+}
+
+.notice {
+  padding: 24px;
+  color: #b91c1c;
+  font-weight: 600;
+}
